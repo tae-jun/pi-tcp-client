@@ -32,7 +32,6 @@ socket.on('close', function () {
 socket.on('data', function (data) {
     console.log(data.toJSON());
 
-    //socket.write(new Buffer([1]));
     serial.write(data, function (err) {
         if (err)
             socket.write(new Buffer([1]));

@@ -1,4 +1,5 @@
 ﻿import config = require('./config');
+import async = require('async');
 
 var SerialPort = require("serialport").SerialPort;
 var serialPort = new SerialPort(config.pi.serialPort, {
