@@ -5,6 +5,7 @@ import config = configAll.pi;
 
 import tcp = require('./tcp/main');
 import serial = require('./serial/main');
+import chromium = require('./chromium/main');
 
 tcp.connect();
 tcp.onData((data)=>serial.write(data, (err)=> {
@@ -14,5 +15,9 @@ tcp.onData((data)=>serial.write(data, (err)=> {
             tcp.write(new Buffer([0]));
     })
 );
+
+tcp.onConnect(()=>{
+    chromium.run();
+});
 
 serial.open();

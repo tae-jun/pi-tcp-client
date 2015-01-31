@@ -12,6 +12,8 @@ function connect() {
     socket.on('connect', function () {
         isConnected = true;
         console.log('+++ Tcp connected');
+        if (typeof onConnectListener == 'function')
+            onConnectListener();
     });
     socket.on('error', function (err) {
         console.log('--- Tcp socket error');
@@ -39,6 +41,11 @@ function onData(listener) {
     onDataListener = listener;
 }
 exports.onData = onData;
+var onConnectListener;
+function onConnect(listener) {
+    onConnectListener = listener;
+}
+exports.onConnect = onConnect;
 function write(buff) {
     if (!isConnected)
         return console.log('--- Cannot write on tcp socket: Socket is closed');

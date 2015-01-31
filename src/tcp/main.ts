@@ -18,6 +18,9 @@ export function connect() {
     socket.on('connect', ()=> {
         isConnected = true;
         console.log('+++ Tcp connected');
+
+        if (typeof onConnectListener == 'function')
+            onConnectListener();
     });
 
     socket.on('error', (err)=> {
@@ -49,6 +52,11 @@ export function connect() {
 var onDataListener:Function;
 export function onData(listener:(data:Buffer)=>void) {
     onDataListener = listener;
+}
+
+var onConnectListener:Function;
+export function onConnect(listener:()=>void) {
+    onConnectListener = listener;
 }
 
 export function write(buff:Buffer) {
