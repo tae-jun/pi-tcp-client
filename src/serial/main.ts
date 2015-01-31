@@ -12,13 +12,13 @@ var serialPort;
 export function open() {
     console.log('=== Serial port connecting...');
 
-    serialPort = new SerialPort(config.serialPort, {
+    serialPort = new SerialPort(config.port, {
         baudrate: config.baudrate
     });
 
     serialPort.on('open', () => {
         isOpen = true;
-        console.log('+++ Serial port open on "%s"', config.serialPort);
+        console.log('+++ Serial port open on "%s"', config.port);
     });
 
     serialPort.on('error', (err)=> {

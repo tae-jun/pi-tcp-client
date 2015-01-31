@@ -1,5 +1,6 @@
 /// <reference path="../scripts/_references.d.ts" />
-var configAll = require('../src/config');
+// Parse command line arguments
+require('./argv');
 var tcp = require('./tcp/main');
 var serial = require('./serial/main');
 var chromium = require('./chromium/main');

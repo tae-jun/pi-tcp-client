@@ -6,12 +6,12 @@ var SerialPort = require('serialport').SerialPort;
 var serialPort;
 function open() {
     console.log('=== Serial port connecting...');
-    serialPort = new SerialPort(config.serialPort, {
+    serialPort = new SerialPort(config.port, {
         baudrate: config.baudrate
     });
     serialPort.on('open', function () {
         isOpen = true;
-        console.log('+++ Serial port open on "%s"', config.serialPort);
+        console.log('+++ Serial port open on "%s"', config.port);
     });
     serialPort.on('error', function (err) {
         isOpen = false;

@@ -1,7 +1,7 @@
 /// <reference path="../scripts/_references.d.ts" />
 
-import configAll = require('../src/config');
-import config = configAll.pi;
+// Parse command line arguments
+require('./argv');
 
 import tcp = require('./tcp/main');
 import serial = require('./serial/main');
